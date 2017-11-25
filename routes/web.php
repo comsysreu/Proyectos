@@ -18,22 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/clientes', function(){
-	return view('clientes.index');
-})->name('clientes');
 
-Route::get('/proveedores', function(){
-	return view('proveedores.index');
-})->name('proveedores');
+Route::resource('clientes', 'clientesController');
+Route::resource('productos', 'productosController');
+Route::resource('proveedores', 'proveedoresController');
+Route::resource('usuarios', 'usuariosController');
+Route::resource('ventas', 'ventasController');
 
-Route::get('/productos', function(){
-	return view('productos.index');
-})->name('productos');
 
-Route::get('/ventas', function(){
-	return view('ventas.index');
-})->name('ventas');
-
-Route::get('/usuarios', function(){
-	return view('usuarios.index');
-})->name('usuarios');

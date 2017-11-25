@@ -26,6 +26,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+                    <a href="{{ route('clientes.index') }}">Clientes</a>                    
+                    <a href="{{ route('productos.index') }}">Productos</a>
+                    <a href="{{ route('proveedores.index') }}">Proveedores</a>
+                    <a href="{{ route('usuarios.index') }}">Usuarios</a>
+                    <a href="{{ route('ventas.index') }}">Ventas</a>
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">

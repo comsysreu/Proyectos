@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class clientes extends Controller
+class ventasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,7 @@ class clientes extends Controller
      */
     public function index()
     {
-        $users = DB:table('clientes')->get();
-        return view ('clientes.index', ['clientes'=>$users]);
+        //
     }
 
     /**

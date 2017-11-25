@@ -6,11 +6,11 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                <a href="{{ route('clientes') }}">Clientes</a>
-                <a href="{{ route('clientes') }}">Proveedores</a>
-                <a href="{{ route('clientes') }}">Productos</a>
-                <a href="{{ route('clientes') }}">Ventas</a>
-                <a href="{{ route('clientes') }}">Usuarios</a>
+                <a href="{{ route('clientes.index') }}">Clientes</a>
+                <a href="">Proveedores</a>
+                <a href="">Productos</a>
+                <a href="">Ventas</a>
+                <a href="">Usuarios</a>
 
                 </div>
                 <div class="panel-body">
