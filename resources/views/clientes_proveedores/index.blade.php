@@ -6,10 +6,10 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <H3>LISTADO DE PROVEEDORES</H3>
+                    <H3>LISTADO DE CLIENTES-PROVEEDORES</H3>
                 </div>
                 <br>
-                <div><a href="{{ route('proveedores.create') }}" class="btn btn-primary">Agregar Registro </a>
+                <div><a href="{{ route('productos.create') }}" class="btn btn-primary">Agregar Registro </a>
                 </div>
                 <div class="panel-body">
                     @if (session('status'))
@@ -22,23 +22,26 @@
                         
                         <thead>
                             <th>#</th>
-                            <th>Nombre</th>
-                            <th>NIT</th>
-                            <th>Télefono</th>
-                            <th>Acciones</th>
+                            <th>Cliente</th>
+                            <th># Cliente</th>
+                            <th>Proveedor</th>
+                            <th># Proveedor</th>                            
                         </thead>
                         <tbody>
                             @foreach ($registro as $dato)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$dato->nombre}}</td>
-                                <td>{{$dato->nit}}</td>
-                                <td>{{$dato->telefono}}</td>
+                                <td>{{$dato->clientes->nombre}}</td>  
+                                <td>{{$dato->clientes->telefono}}</td>  
+                                <td>{{$dato->proveedores->nombre}}</td>  
+                                <td>{{$dato->proveedores->telefono}}</td>   
+                                
                                     <td>
-                                        <a href="{{ route('proveedores.edit', $dato->id) }}" class="btn btn-primary">        Editar
+                                        <a href="{{ route('productos.edit', $dato->id) }}" class="btn btn-primary">        Editar
                                         </a>
-                               
-                                       <a href="{{ route('proveedores.show', $dato->id) }}" class="btn btn-danger">        Eliminar
+                                </td>
+                                <td>
+                                       <a href="{{ route('productos.show', $dato->id) }}" class="btn btn-danger">        Eliminar
                                         </a>
                                 </td>
                             </tr>

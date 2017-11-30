@@ -3,82 +3,72 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ventas;
+
 
 class ventasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        //
+        //$registro = ventas::all();
+        // $registro= ventas::with('cliente')->with('usuario')->with('detalle')->get();
+        $registro= ventas::with(['cliente', 'usuario'])->get();
+        return view('ventas.index', compact('registro'));
+        
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+        public function create()
     {
-        //
+        return view('ventas.crear');
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        ventas::create(
+            [
+                "nombre" => $request->input('nombre'),
+                "codigo" => $request->input('codigo'),
+                "SKU" => $request->input('SKU'),
+                
+            ]
+        );
+                return redirect()->route('ventas.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+        public function show($id)
     {
-        //
+        $registro = ventas::find($id);
+        //dd($registro->detalle);
+        return view ('ventas.mostrar', compact('registro'));
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+       
     public function edit($id)
     {
-        //
+        $registro = ventas::find($id);
+        return view ('ventas.anular', compact('registro'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+            $estado = 1;
+            $registro = ventas::find($id);
+                 $registro->estado  = $estado;
+                 $registro->save();     
+                return redirect()->route('ventas.index');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
-        //
+            $registro = ventas::find($id);
+            $registro->delete();
+            return redirect()->route('ventas.index');
     }
 }

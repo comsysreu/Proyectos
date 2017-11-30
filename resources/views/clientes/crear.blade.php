@@ -56,7 +56,15 @@
                             <label for="sexo" class="col-md-4 control-label">Sexo</label>
 
                             <div class="col-md-6">
-                                    <input id="sexo" type="text" class="form-control" name="sexo" value="{{ old('sexo') }}" required autofocus>
+                                    <input id="sexo" type="bool" class="form-control" name="sexo" value="{{ old('sexo') }}" required autofocus>
+                                    <label for="sexo" class="col-md-4 control-label">
+                                        <input type="checkbox" value = '1' name="sexo">
+                                        Mujer
+                                    </label>
+                                    <label for="sexo" class="col-md-4 control-label">
+                                        <input type="checkbox" value = '0' name="sexo1">
+                                        Hombre
+                                    </label>
                                 @if ($errors->has('sexo'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('sexo') }}</strong>

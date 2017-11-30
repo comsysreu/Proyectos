@@ -28,7 +28,7 @@
                             <label for="codigo" class="col-md-4 control-label">Codigo</label>
 
                             <div class="col-md-6">
-                                <input id="codigo" type="text" class="form-control" name="codigo" value="{{ old('codigo') }}" required autofocus>
+                                <input id="codigo" type="number" class="form-control" name="codigo" value="{{ old('codigo') }}" required autofocus>
 
                                 @if ($errors->has('codigo'))
                                     <span class="help-block">
@@ -52,6 +52,19 @@
                             </div>
                         </div>
 
+                         <div class="form-group{{ $errors->has('precio') ? ' has-error' : '' }}">
+                            <label for="precio" class="col-md-4 control-label">Precio</label>
+
+                            <div class="col-md-6">
+                                <input id="precio" type="number" class="form-control" name="precio" value="{{ old('precio') }}" required autofocus>
+
+                                @if ($errors->has('precio'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('precio') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                         
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

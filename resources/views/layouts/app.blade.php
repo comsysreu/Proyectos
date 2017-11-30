@@ -26,11 +26,6 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="{{ route('clientes.index') }}">Clientes</a>                    
-                    <a href="{{ route('productos.index') }}">Productos</a>
-                    <a href="{{ route('proveedores.index') }}">Proveedores</a>
-                    <a href="{{ route('usuarios.index') }}">Usuarios</a>
-                    <a href="{{ route('ventas.index') }}">Ventas</a>
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
@@ -52,6 +47,18 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
+                        
+                                @if (Auth::check())
+                                <li><a href="{{ route('clientes.index') }}">Clientes</a> </li>                   
+                                <li><a href="{{ route('productos.index') }}">Productos</a></li>
+                                <li><a href="{{ route('clientes_proveedores.index') }}">Clientes y Proveedores</a></li>
+                                <li><a href="{{ route('proveedores.index') }}">Proveedores</a></li>
+                                <li><a href="{{ route('usuarios.index') }}">Usuarios</a></li>
+                                <li><a href="{{ route('ventas.index') }}">Ventas</a></li>                                
+                                @else
+                                <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('register') }}">Register</a></li>
+                                @endif    
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -62,15 +69,19 @@
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Cerrar Sesión
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
+                                        <nav>
+                                
+                            </nav>
                                     </li>
                                 </ul>
                             </li>
+                            
                         @endif
                     </ul>
                 </div>

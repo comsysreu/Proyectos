@@ -10,4 +10,10 @@ class ventas_detalle extends Model
    protected $fillable = [
         'id_venta', 'id_producto','cantidad', 'subtotal',
     ];
+
+    public function producto()
+    {
+        return $this->hasOne('App\productos', 'id', 'id_producto');
+     
+    }
 }

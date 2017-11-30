@@ -31,15 +31,15 @@ class clientesController extends Controller
 
     public function store(Request $request)
     {
-        clientes_model::create(
-            [
-                "nombre" => $request->input('nombre'),
-                "direccion" => $request->input('direccion'),
-                "fecha_nacimiento" => $request->input('fecha_nacimiento'),
-                "sexo" => $request->input('sexo'),
-                "nit" => $request->input('nit'),
-                "telefono" => $request->input('telefono'),
-            ]
+        clientes_model::create( $request-> all()
+            // [
+            //     "nombre" => $request->input('nombre'),
+            //     "direccion" => $request->input('direccion'),
+            //     "fecha_nacimiento" => $request->input('fecha_nacimiento'),
+            //     "sexo" => $request->input('sexo'),
+            //     "nit" => $request->input('nit'),
+            //     "telefono" => $request->input('telefono'),
+            // ]
         );
                 return redirect()->route('clientes.index');
     }

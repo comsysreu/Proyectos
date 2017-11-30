@@ -54,7 +54,10 @@ $factory->define(App\productos::class, function (Faker\Generator $faker) {
     return [
         'nombre' => $faker->name,
         'codigo' => $faker->ean13,
+        'existencia' => rand(1,50),
         'SKU' => $faker->ean8,
+        'precio' => rand(15.0,550.0),
+        'existencia' => rand(1,50),
     ];
 });
 
@@ -74,6 +77,8 @@ $factory->define(App\ventas::class, function (Faker\Generator $faker) {
         'id_usuario' => rand(1,10),
         'id_cliente' => rand(1,10),
         'total' => rand(15.0,550.0),
+        'estado' => rand(0,1),
+
 
     ];
 });

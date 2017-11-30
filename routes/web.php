@@ -11,6 +11,10 @@
 |
 */
 
+// DB::listen(function($query){
+// 	echo "<pre>{$query->sql}</pre>";
+// });
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,5 +28,6 @@ Route::resource('productos', 'productosController');
 Route::resource('proveedores', 'proveedoresController');
 Route::resource('usuarios', 'usuariosController');
 Route::resource('ventas', 'ventasController');
+Route::resource('clientes_proveedores', 'Clientes_ProveedoresController');
 
 

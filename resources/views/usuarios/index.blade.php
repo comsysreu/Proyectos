@@ -6,10 +6,10 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <H3>LISTADO DE CLIENTES</H3>
+                    <H3>LISTADO DE USUARIOS</H3>
                 </div>
                 <br>
-                <div><a href="{{ route('clientes.create') }}" class="btn btn-primary">Agregar Registro </a>
+                <div><a href="{{ url('/register') }}" class="btn btn-primary">Agregar Registro </a>
                 </div>
                 <div class="panel-body">
                     @if (session('status'))
@@ -23,18 +23,15 @@
                         <thead>
                             <th>#</th>
                             <th>Nombre</th>
-                            <th>F. Nacimiento</th>
-                            <th>NIT</th>
+                            <th>Email</th>
                             <th>Sexo</th>
-                            <th>Telefono</th>
                         </thead>
                         <tbody>
-                            @foreach ($clientes as $dato)
+                            @foreach ($registro as $dato)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$dato->nombre}}</td>
-                                <td>{{$dato->fecha_nacimiento       }}</td>
-                                <td>{{$dato->nit}}</td>
+                                <td>{{$dato->name}}</td>
+                                <td>{{$dato->email}}</td>
                                 <td>
                                     @if($dato->sexo == 1)
                                     Mujer
@@ -42,13 +39,12 @@
                                     Hombre
                                     @endif
                                 </td>
-                                <td>{{$dato->telefono}}</td>
                                     <td>
-                                        <a href="{{ route('clientes.edit', $dato->id) }}" class="btn btn-primary">        Editar
+                                        <a href="{{ route('usuarios.edit', $dato->id) }}" class="btn btn-primary">        Editar
                                         </a>
                                 </td>
                                 <td>
-                                       <a href="{{ route('clientes.show', $dato->id) }}" class="btn btn-danger">        Eliminar
+                                       <a href="{{ route('usuarios.show', $dato->id) }}" class="btn btn-danger">        Eliminar
                                         </a>
                                 </td>
                             </tr>

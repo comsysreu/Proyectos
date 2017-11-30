@@ -29,6 +29,7 @@ class productosController extends Controller
                 "nombre" => $request->input('nombre'),
                 "codigo" => $request->input('codigo'),
                 "SKU" => $request->input('SKU'),
+                "precio" => $request->input('precio'),
                 
             ]
         );
@@ -56,6 +57,7 @@ class productosController extends Controller
                  $registro->nombre  = $request->input('nombre', $registro->nombre);
                  $registro->codigo  = $request->input('codigo', $registro->codigo);
                  $registro->SKU     = $request->input('SKU', $registro->SKU);
+                 $registro->precio     = $request->input('precio', $registro->precio);
                  $registro->save();     
 
                 return redirect()->route('productos.index');

@@ -24,7 +24,9 @@
                             <th>#</th>
                             <th>Nombre</th>
                             <th>Codigo</th>
+                            <th>Existencia</th>
                             <th>SKU</th>
+                            <th>Precio</th>
                         </thead>
                         <tbody>
                             @foreach ($registro as $dato)
@@ -32,7 +34,9 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$dato->nombre}}</td>
                                 <td>{{$dato->codigo}}</td>
+                                <td>{{$dato->existencia}}</td>
                                 <td>{{$dato->SKU}}</td>
+                                <td>{{$dato->precio}}</td>
                                     <td>
                                         <a href="{{ route('productos.edit', $dato->id) }}" class="btn btn-primary">        Editar
                                         </a>

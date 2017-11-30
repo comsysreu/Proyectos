@@ -17,6 +17,7 @@ class VentasTable extends Migration
          $table->increments('id');
             $table->integer('id_usuario')->unsigned();
             $table->integer('id_cliente')->unsigned();
+            $table->tinyInteger('estado');
             $table->decimal('total');
             $table->timestamps();
         });

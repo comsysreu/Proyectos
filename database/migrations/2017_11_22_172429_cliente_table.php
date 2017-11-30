@@ -19,7 +19,7 @@ class ClienteTable extends Migration
             $table->text('direccion');
             $table->dateTime('fecha_nacimiento');
             $table->tinyInteger('sexo');
-            $table->string('nit');
+            $table->string('nit')->unique;
             $table->string('telefono');
             $table->timestamps();
         });

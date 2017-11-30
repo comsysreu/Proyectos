@@ -52,11 +52,25 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('precio') ? ' has-error' : '' }}">
+                            <label for="precio" class="col-md-4 control-label">Precio</label>
+
+                            <div class="col-md-6">
+                                <input id="precio" type="number" class="form-control" name="precio" value="{{ $registro->precio }}" required autofocus>
+
+                                @if ($errors->has('precio'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('precio') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Editar
+                                    Actualizar
                                 </button>
                             </div>
                         </div>

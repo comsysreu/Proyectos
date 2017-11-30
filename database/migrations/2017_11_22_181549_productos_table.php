@@ -17,7 +17,9 @@ class ProductosTable extends Migration
          $table->increments('id');
             $table->string('nombre');
             $table->string('codigo');
+            $table->integer('existencia');
             $table->string('SKU')->unique();
+            $table->decimal('precio');
             $table->timestamps();
         });
     }

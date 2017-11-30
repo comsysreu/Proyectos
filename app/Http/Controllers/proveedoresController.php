@@ -3,82 +3,72 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\proveedores_model;
+
 
 class proveedoresController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        //
+        $registro = proveedores_model::all();
+        return view('proveedores.index', compact('registro'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+        public function create()
     {
-        //
+        return view('proveedores.crear');
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        proveedores_model::create(
+            [
+                "nombre" => $request->input('nombre'),
+                "direccion" => $request->input('direccion'),
+                "nit" => $request->input('nit'),
+                "telefono" => $request->input('telefono'),
+                
+            ]
+        );
+                return redirect()->route('proveedores.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+        public function show($id)
     {
-        //
+        $registro = proveedores_model::find($id);
+        return view ('proveedores.eliminar', compact('registro'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
-        //
+        $registro = proveedores_model::find($id);
+
+        return view ('proveedores.editar', compact('registro'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+            $registro = proveedores_model::find($id);
+            
+                 $registro->nombre  = $request->input('nombre', $registro->nombre);
+                 $registro->direccion  = $request->input('direccion', $registro->direccion);
+                 $registro->nit     = $request->input('nit', $registro->nit);
+                 $registro->telefono     = $request->input('telefono', $registro->telefono);
+                 $registro->save();     
+
+                return redirect()->route('proveedores.index');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
-        //
+            $registro = proveedores_model::find($id);
+            $registro->delete();
+            return redirect()->route('proveedores.index');
     }
 }

@@ -3,82 +3,70 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+
 
 class usuariosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        //
+        $registro = User::all();
+        return view('usuarios.index', compact('registro'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+        public function create()
     {
-        //
+        return view('usuarios.crear');
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        User::create(
+            [
+                "nombre" => $request->input('nombre'),
+                "codigo" => $request->input('codigo'),
+                "SKU" => $request->input('SKU'),
+                
+            ]
+        );
+                return redirect()->route('usuarios.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+        public function show($id)
     {
-        //
+        $registro = User::find($id);
+        return view ('usuarios.eliminar', compact('registro'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
-        //
+        $registro = User::find($id);
+
+        return view ('usuarios.editar', compact('registro'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+            $registro = User::find($id);
+            
+                 $registro->nombre  = $request->input('nombre', $registro->nombre);
+                 $registro->codigo  = $request->input('codigo', $registro->codigo);
+                 $registro->SKU     = $request->input('SKU', $registro->SKU);
+                 $registro->save();     
+
+                return redirect()->route('usuarios.index');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
-        //
+            $registro = User::find($id);
+            $registro->delete();
+            return redirect()->route('usuarios.index');
     }
 }

@@ -11,4 +11,6 @@ class clientes_model extends Model
    protected $fillable = [
         'nombre', 'direccion', 'fecha_nacimiento', 'sexo', 'nit', 'telefono'
     ];
+
+    
 }
